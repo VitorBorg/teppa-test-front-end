@@ -18,13 +18,18 @@ const FormMultiStepNota = () => {
   const FormTitles = ["Cnpj do comprador", "Produto", "Quantidade"];
 
   const [data, setData] = useState({
+    idNota: "",
     cnpjCompra: "",
     idProduto: "",
     qntProduto: "",
   });
 
-  const { changeComponentValue, checkDataUpdate, dataUpdate, finishedForm } =
-    useDataGrid();
+  const {
+    changeComponentValue,
+    checkDataUpdate,
+    dataUpdate,
+    finishedForm,
+  }: any = useDataGrid();
 
   useEffect(() => {
     if (checkDataUpdate == 1) {

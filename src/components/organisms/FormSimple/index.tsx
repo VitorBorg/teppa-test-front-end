@@ -14,10 +14,7 @@ const FormSimple = () => {
     role: "",
   });
 
-  const { auth } = useAuth();
-  const { userToken } = useAuth();
-
-  const { signInWithGoogle, signout } = useAuth();
+  const { auth, userToken, signInWithGoogle, signout }: any = useAuth();
 
   //console.log(auth);
 

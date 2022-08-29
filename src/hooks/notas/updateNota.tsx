@@ -1,8 +1,15 @@
 import Axios from "axios";
 
-const updateNota = async (data) => {
+type dataUpdate = {
+  idNota: string;
+  cnpjCompra: string;
+  idProduto: string;
+  qntProduto: string;
+};
+
+const updateNota = async (data: dataUpdate) => {
   console.log("DATA UPDATE");
-  console.log(data);
+  console.log(typeof data);
   const url = ` http://localhost:8098/nota/save/${data.idNota}`;
 
   const res = await await Axios.put(

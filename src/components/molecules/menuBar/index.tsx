@@ -9,8 +9,8 @@ import useDataGrid from "../../../hooks/contexts/useGridData";
 import { useEffect } from "react";
 
 const MenuBar = () => {
-  const { signout } = useAuth();
-  const { changeComponentValue } = useDataGrid();
+  const { signout }: any = useAuth();
+  const { changeComponentValue }: any = useDataGrid();
 
   const createNoteHandle = () => {
     changeComponentValue(1);

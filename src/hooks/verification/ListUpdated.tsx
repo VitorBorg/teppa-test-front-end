@@ -4,7 +4,7 @@ import { AuthContext } from "../../context/auth";
 import useDataGrid from "../contexts/useGridData";
 
 const ListUpdated = () => {
-  const { ListHasChanged } = useDataGrid();
+  const { ListHasChanged }: any = useDataGrid();
   () => ListHasChanged();
   console.log("update");
 };

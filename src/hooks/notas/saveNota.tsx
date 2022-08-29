@@ -1,6 +1,12 @@
 import Axios from "axios";
 
-const saveNota = async (data) => {
+type dataUpdate = {
+  cnpjCompra: string;
+  idProduto: string;
+  qntProduto: string;
+};
+
+const saveNota = async (data: dataUpdate) => {
   const url = "http://localhost:8098/nota/save";
 
   const res = await await Axios.post(url, data, {

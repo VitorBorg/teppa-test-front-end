@@ -6,7 +6,7 @@ import * as S from "./styles";
 
 const SignIn = () => {
   const navigate = useNavigate();
-  const { auth } = useAuth();
+  const { auth }: any = useAuth();
 
   useEffect(() => {
     if (window.localStorage.getItem("auth") === "true") {

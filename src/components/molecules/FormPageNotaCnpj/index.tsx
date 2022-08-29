@@ -3,7 +3,12 @@ import * as S from "./styles";
 import { useEffect, useState } from "react";
 import Message from "../../atoms/Message";
 
-const FormPageNotaCnpj = ({ data, setData, setValidation, validation }) => {
+const FormPageNotaCnpj = ({
+  data,
+  setData,
+  setValidation,
+  validation,
+}: any) => {
   //const [verification, setVerification] = useState(false);
 
   const handleCNPJ = (e: any) => {

@@ -1,6 +1,6 @@
 import * as S from "./styles";
 
-const TitleSubTitle = ({ nota }) => {
+const TitleSubTitle = () => {
   return (
     <S.Container>
       <S.Content>

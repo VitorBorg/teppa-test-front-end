@@ -5,6 +5,8 @@ import Home from "../pages/Home";
 import SignIn from "../pages/SignIn";
 import SignUp from "../pages/SignUp";
 
+import useAuth from "../hooks/contexts/useAuth";
+
 const RoutesApp = () => {
   return (
     <BrowserRouter>

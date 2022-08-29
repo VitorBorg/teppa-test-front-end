@@ -2,7 +2,12 @@ import * as S from "./styles";
 import { useEffect } from "react";
 import Message from "../../atoms/Message";
 
-const FormPageNotaQuantity = ({ data, setData, setValidation, validation }) => {
+const FormPageNotaQuantity = ({
+  data,
+  setData,
+  setValidation,
+  validation,
+}: any) => {
   const handleQuantity = (e: any) => {
     setData({ ...data, qntProduto: e.target.value });
   };

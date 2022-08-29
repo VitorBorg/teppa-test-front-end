@@ -5,8 +5,19 @@ import deleteNotas from "../../../hooks/notas/deleteNotas";
 import DeleteIcon from "../../atoms/DeleteIcon";
 import useDataGrid from "../../../hooks/contexts/useGridData";
 
-const CardNota = (nota: string) => {
-  const { ListHasChanged, editForm } = useDataGrid();
+type dataNota = {
+  cnpj: string;
+  date: string;
+  id: string;
+  idProduto: string;
+  qnt: string;
+};
+
+const CardNota = (nota: dataNota) => {
+  console.log("Nota do caralho");
+  console.log(nota);
+  console.log(typeof nota);
+  const { ListHasChanged, editForm }: any = useDataGrid();
 
   const handleDelete = () => {
     deleteNotas(nota.id);

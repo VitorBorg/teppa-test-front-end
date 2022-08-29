@@ -1,6 +1,6 @@
 import * as S from "./styles";
 
-const Message = (type: string) => {
+const Message = (type: any) => {
   return (
     <S.Content>
       {type.type === "warning" ? (

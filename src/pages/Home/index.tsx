@@ -10,8 +10,8 @@ import useDataGrid from "../../hooks/contexts/useGridData";
 
 const Home = () => {
   const navigate = useNavigate();
-  const { auth } = useAuth();
-  const { componentValue, checkDataUpdate } = useDataGrid();
+  const { auth }: any = useAuth();
+  const { componentValue, checkDataUpdate }: any = useDataGrid();
 
   const [component, setComponent] = useState(1);
 

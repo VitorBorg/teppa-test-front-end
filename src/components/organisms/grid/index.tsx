@@ -7,10 +7,18 @@ import { useEffect, useState } from "react";
 import useAuth from "../../../hooks/contexts/useAuth";
 import useDataGrid from "../../../hooks/contexts/useGridData";
 
+type dataNota = {
+  id: string;
+  cnpjCompra: string;
+  idProduto: string;
+  qntProduto: string;
+  dateTime: string;
+};
+
 const Grid = () => {
   const [data, setData] = useState([]);
-  const { signout } = useAuth();
-  const { updateList } = useDataGrid();
+  const { signout }: any = useAuth();
+  const { updateList }: any = useDataGrid();
 
   useEffect(() => {
     const dataFetch = async () => {
@@ -35,7 +43,7 @@ const Grid = () => {
     <>
       <S.Container>
         <S.ContainerUl>
-          {data?.map((nota) => (
+          {data?.map((nota: dataNota) => (
             <li key={nota.id}>
               <CardNota
                 id={nota?.id}

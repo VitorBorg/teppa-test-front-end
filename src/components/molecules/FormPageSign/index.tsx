@@ -3,7 +3,7 @@ import * as S from "./styles";
 import deleteNotas from "../../../hooks/notas/deleteNotas";
 import { useEffect, useState } from "react";
 
-const FormPageSign = ({ data, setData, ps, setPs }) => {
+const FormPageSign = ({ data, setData }: any) => {
   const handleEmail = (e: any) => {
     setData({ ...data, email: e.target.value });
   };

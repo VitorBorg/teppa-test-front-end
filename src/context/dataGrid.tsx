@@ -2,7 +2,7 @@ import { createContext, useState } from "react";
 
 export const DataGridContext = createContext({});
 
-export const DataGridProvider = ({ children }) => {
+export const DataGridProvider = ({ children }: any) => {
   //para atualizar o grid quando alguma mudanca ocorrer (delete)
   const [updateList, setUpdateList] = useState(false);
   const [componentValue, setComponentValue] = useState(0);
@@ -17,7 +17,7 @@ export const DataGridProvider = ({ children }) => {
   });
 
   //form update
-  const editForm = (data) => {
+  const editForm = (data: any) => {
     setDataUpdate({
       idNota: data.id,
       cnpjCompra: data.cnpj,
@@ -36,7 +36,7 @@ export const DataGridProvider = ({ children }) => {
     setUpdateList(!updateList);
   };
 
-  const changeComponentValue = (value) => {
+  const changeComponentValue = (value: number) => {
     setComponentValue(value);
   };
 

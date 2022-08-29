@@ -3,7 +3,7 @@ import * as S from "./styles";
 import deleteNotas from "../../../hooks/notas/deleteNotas";
 import { useEffect, useState } from "react";
 
-const FormPagePersonal = ({ data, setData }) => {
+const FormPagePersonal = ({ data, setData }: any) => {
   const handleName = (e: any) => {
     setData({ ...data, name: e.target.value });
   };
