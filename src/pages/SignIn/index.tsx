@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import FormSimple from "../../components/organisms/FormSimple";
 import useAuth from "../../hooks/contexts/useAuth";
 import * as S from "./styles";

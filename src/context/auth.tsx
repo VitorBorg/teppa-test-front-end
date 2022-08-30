@@ -30,7 +30,7 @@ export const AuthProvider = ({ children }: any) => {
     createUserWithEmailAndPassword(authValidation, email, password)
       .then((userCredential: any) => {
         // Signed in
-        console.log("Criado!");
+        //console.log("Criado!");
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -42,8 +42,6 @@ export const AuthProvider = ({ children }: any) => {
   };
 
   const signWithEmailPassword = (email: string, password: string) => {
-    console.log(email + ", " + password);
-
     signInWithEmailAndPassword(authValidation, email, password)
       .then((userCredential: any) => {
         // Signed in
@@ -73,7 +71,7 @@ export const AuthProvider = ({ children }: any) => {
     signInWithPopup(authValidation, provider)
       .then((result: any) => {
         // This gives you a Google Access Token. You can use it to access the Google API.
-        //const credential = GoogleAuthProvider.credentialFromResult(result);
+        const credential = GoogleAuthProvider.credentialFromResult(result);
         const resultAccess = result.user?.accessToken!;
 
         window.localStorage.setItem("userToken", resultAccess);
@@ -83,7 +81,6 @@ export const AuthProvider = ({ children }: any) => {
         setAuth(true);
       })
       .catch((error) => {
-        console.log();
         // Handle Errors here.
         const errorCode = error.code;
         const errorMessage = error.message;

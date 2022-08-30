@@ -8,9 +8,7 @@ type dataUpdate = {
 };
 
 const updateNota = async (data: dataUpdate) => {
-  console.log("DATA UPDATE");
-  console.log(typeof data);
-  const url = ` http://localhost:8098/nota/save/${data.idNota}`;
+  const url = `https://teppa-test-backend.herokuapp.com/nota/save/${data.idNota}`;
 
   const res = await await Axios.put(
     url,

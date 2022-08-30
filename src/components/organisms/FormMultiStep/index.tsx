@@ -5,11 +5,14 @@ import FormPageTerms from "../../molecules/FormPageTerms";
 import FormPageSign from "../../molecules/FormPageSign";
 import useAuth from "../../../hooks/contexts/useAuth";
 
+import { useNavigate } from "react-router-dom";
+
 const FormMultiStep = () => {
+  const navigate = useNavigate();
   const [page, setPage] = useState(0);
   const [validation, setValidation] = useState(false);
 
-  const { signWithEmail }: any = useAuth();
+  const { signWithEmail, cancelNoteCreateHandle }: any = useAuth();
 
   const FormTitles = ["Dados", "Termos"];
 
@@ -25,6 +28,7 @@ const FormMultiStep = () => {
 
   const handlePreviously = () => {
     if (page > 0) setPage(page - 1);
+    else if (page === 0) navigate("/");
   };
 
   const changeButton =
@@ -33,6 +37,7 @@ const FormMultiStep = () => {
         disabled={!validation}
         onClick={() => {
           alert("Enviado!");
+          navigate("/");
           signWithEmail({
             email: data.email,
             password: data.password,
@@ -83,9 +88,7 @@ const FormMultiStep = () => {
           <div>{changePage()}</div>
 
           <S.ButtonDiv>
-            <button onClick={handlePreviously} disabled={page == 0}>
-              Voltar
-            </button>
+            <button onClick={handlePreviously}>Voltar</button>
             {changeButton}
           </S.ButtonDiv>
         </S.FormDiv>

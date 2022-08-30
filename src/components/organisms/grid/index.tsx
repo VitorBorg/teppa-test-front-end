@@ -23,9 +23,10 @@ const Grid = () => {
   useEffect(() => {
     const dataFetch = async () => {
       try {
+        //console.log("BBBBBBBBBBB");
         const fetch = await getAllNotas();
 
-        console.log(fetch);
+        //console.log(fetch);
         if (fetch?.code === "404") signout();
 
         setData(fetch);
@@ -36,7 +37,7 @@ const Grid = () => {
 
     dataFetch();
 
-    console.log(data?.length);
+    //console.log(data?.length);
   }, [, updateList]);
 
   return (

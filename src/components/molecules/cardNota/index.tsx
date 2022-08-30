@@ -14,9 +14,6 @@ type dataNota = {
 };
 
 const CardNota = (nota: dataNota) => {
-  console.log("Nota do caralho");
-  console.log(nota);
-  console.log(typeof nota);
   const { ListHasChanged, editForm }: any = useDataGrid();
 
   const handleDelete = () => {
@@ -24,7 +21,6 @@ const CardNota = (nota: dataNota) => {
     {
       ListHasChanged();
     }
-    //console.log(res);
   };
 
   const handleEdit = () => {

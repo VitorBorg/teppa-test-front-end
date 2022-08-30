@@ -6,7 +6,6 @@ import useDataGrid from "../contexts/useGridData";
 const ListUpdated = () => {
   const { ListHasChanged }: any = useDataGrid();
   () => ListHasChanged();
-  console.log("update");
 };
 
 export default ListUpdated;
