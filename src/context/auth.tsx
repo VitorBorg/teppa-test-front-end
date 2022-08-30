@@ -29,18 +29,8 @@ export const AuthProvider = ({ children }: any) => {
   }) => {
     createUserWithEmailAndPassword(authValidation, email, password)
       .then((userCredential: any) => {
-        console.log("ELE ENTROU");
         // Signed in
-        const user = userCredential.user;
-        console.log(user);
-        console.log(user?.accessToken!);
-        //const resultAccess = user?.accessToken!;
-
-        //window.localStorage.setItem("userToken", resultAccess);
-        //window.localStorage.setItem("auth", "true");
-
-        //setUserToken(resultAccess);
-        //setAuth(true);
+        console.log("Criado!");
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -51,19 +41,20 @@ export const AuthProvider = ({ children }: any) => {
       });
   };
 
-  const signWithEmailPassword = ({
-    email,
-    password,
-  }: {
-    email: string;
-    password: string;
-  }) => {
+  const signWithEmailPassword = (email: string, password: string) => {
+    console.log(email + ", " + password);
+
     signInWithEmailAndPassword(authValidation, email, password)
       .then((userCredential: any) => {
         // Signed in
         const user = userCredential.user;
-        console.log(user);
-        // ...
+        const resultAccess = user?.accessToken!;
+
+        window.localStorage.setItem("userToken", resultAccess);
+        window.localStorage.setItem("auth", "true");
+
+        setUserToken(resultAccess);
+        setAuth(true);
       })
       .catch((error) => {
         const errorCode = error.code;
