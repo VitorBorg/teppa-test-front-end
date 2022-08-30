@@ -15,9 +15,9 @@ const SignIn = () => {
   }, [auth]);
 
   return (
-    <>
+    <S.Container>
       <FormSimple />
-    </>
+    </S.Container>
   );
 };
 

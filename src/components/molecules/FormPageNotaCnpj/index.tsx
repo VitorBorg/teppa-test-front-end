@@ -1,6 +1,6 @@
 import * as S from "./styles";
 
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import Message from "../../atoms/Message";
 
 const FormPageNotaCnpj = ({

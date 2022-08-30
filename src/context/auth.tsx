@@ -1,6 +1,12 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState } from "react";
 
-import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
+import {
+  GoogleAuthProvider,
+  getAuth,
+  signInWithPopup,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
 
 export const AuthContext = createContext({});
 
@@ -12,7 +18,60 @@ export const AuthProvider = ({ children }: any) => {
     window.localStorage.getItem("userToken")
   );
 
-  useEffect(() => {}, []);
+  const authValidation = getAuth();
+
+  const signWithEmail = ({
+    email,
+    password,
+  }: {
+    email: string;
+    password: string;
+  }) => {
+    createUserWithEmailAndPassword(authValidation, email, password)
+      .then((userCredential: any) => {
+        console.log("ELE ENTROU");
+        // Signed in
+        const user = userCredential.user;
+        console.log(user);
+        console.log(user?.accessToken!);
+        //const resultAccess = user?.accessToken!;
+
+        //window.localStorage.setItem("userToken", resultAccess);
+        //window.localStorage.setItem("auth", "true");
+
+        //setUserToken(resultAccess);
+        //setAuth(true);
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorCode);
+        console.log(errorMessage);
+        // ..
+      });
+  };
+
+  const signWithEmailPassword = ({
+    email,
+    password,
+  }: {
+    email: string;
+    password: string;
+  }) => {
+    signInWithEmailAndPassword(authValidation, email, password)
+      .then((userCredential: any) => {
+        // Signed in
+        const user = userCredential.user;
+        console.log(user);
+        // ...
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorCode);
+        console.log(errorMessage);
+      });
+  };
 
   const signInWithGoogle = () => {
     const auth = getAuth();
@@ -20,7 +79,7 @@ export const AuthProvider = ({ children }: any) => {
 
     auth.languageCode = "pt";
 
-    signInWithPopup(auth, provider)
+    signInWithPopup(authValidation, provider)
       .then((result: any) => {
         // This gives you a Google Access Token. You can use it to access the Google API.
         //const credential = GoogleAuthProvider.credentialFromResult(result);
@@ -57,7 +116,14 @@ export const AuthProvider = ({ children }: any) => {
 
   return (
     <AuthContext.Provider
-      value={{ userToken, auth, signInWithGoogle, signout }}
+      value={{
+        userToken,
+        auth,
+        signInWithGoogle,
+        signout,
+        signWithEmail,
+        signWithEmailPassword,
+      }}
     >
       {children}
     </AuthContext.Provider>

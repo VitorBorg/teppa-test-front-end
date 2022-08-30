@@ -9,29 +9,57 @@ const FormSimple = () => {
   const [data, setData] = useState({
     email: "",
     password: "",
-    passwordConfirmation: "",
-    name: "",
-    role: "",
   });
 
-  const { auth, userToken, signInWithGoogle, signout }: any = useAuth();
+  const { signInWithGoogle, signWithEmailPassword }: any = useAuth();
 
-  //console.log(auth);
+  const loginHandle = () => {
+    signWithEmailPassword(data.email, data.password);
+  };
+
+  const passwordHandle = (e: any) => {
+    setData({ ...data, password: e.target.value });
+  };
+
+  const emailHandle = (e: any) => {
+    setData({ ...data, email: e.target.value });
+  };
 
   return (
     <>
       <S.Container>
         <S.FormDiv>
+          <S.access>
+            <div>
+              <Link to={`/Signup`}>Cadastrar</Link>
+            </div>
+            <div>
+              <button onClick={signInWithGoogle}>Entrar com google</button>
+            </div>
+          </S.access>
+
           <h3>Sign In</h3>
-          <div>
-            {auth ? (
-              <button onClick={signout}>Sair</button>
-            ) : (
-              <Link to={`/Signup`}>Cadastrar</Link> && (
-                <button onClick={signInWithGoogle}>Entrar com google</button>
-              )
-            )}
-          </div>
+
+          <S.Form>
+            <input
+              type="email"
+              placeholder="Email"
+              onChange={emailHandle}
+              value={data.email}
+            />
+
+            <input
+              type="password"
+              placeholder="senha"
+              onChange={passwordHandle}
+              value={data.password}
+            />
+            <S.ButtonDiv>
+              <S.buttonCadastrar onClick={loginHandle}>
+                Fazer Login
+              </S.buttonCadastrar>
+            </S.ButtonDiv>
+          </S.Form>
         </S.FormDiv>
       </S.Container>
     </>

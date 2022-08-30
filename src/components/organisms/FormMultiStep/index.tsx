@@ -1,28 +1,26 @@
 import * as S from "./styles";
 
-import deleteNotas from "../../../hooks/notas/deleteNotas";
 import { useState } from "react";
 import FormPageTerms from "../../molecules/FormPageTerms";
-import FormPagePersonal from "../../molecules/FormPagePersonal";
 import FormPageSign from "../../molecules/FormPageSign";
+import useAuth from "../../../hooks/contexts/useAuth";
 
 const FormMultiStep = () => {
   const [page, setPage] = useState(0);
+  const [validation, setValidation] = useState(false);
 
-  const FormTitles = ["Sign data", "Personal Info", "Terms"];
+  const { signWithEmail }: any = useAuth();
+
+  const FormTitles = ["Dados", "Termos"];
 
   const [data, setData] = useState({
     email: "",
     password: "",
     passwordConfirmation: "",
-    name: "",
-    role: "",
   });
 
-  const [terms, setTerms] = useState(false);
-
   const handleNext = () => {
-    if (page < 2) setPage(page + 1);
+    if (page < 1) setPage(page + 1);
   };
 
   const handlePreviously = () => {
@@ -31,55 +29,65 @@ const FormMultiStep = () => {
 
   const changeButton =
     page == FormTitles.length - 1 ? (
-      <button
-        disabled={!terms}
+      <S.buttonCadastrar
+        disabled={!validation}
         onClick={() => {
           alert("Enviado!");
-          //API POST
+          signWithEmail({
+            email: data.email,
+            password: data.password,
+          });
         }}
       >
         Cadastrar
-      </button>
+      </S.buttonCadastrar>
     ) : (
-      <button
-        onClick={handleNext}
-        disabled={data.password !== data.passwordConfirmation}
-      >
+      <S.buttonCadastrar onClick={handleNext} disabled={!validation}>
         Avançar
-      </button>
+      </S.buttonCadastrar>
     );
 
   const changePage = () => {
     if (page == 0) {
       return (
         <div>
-          <FormPageSign data={data} setData={setData} />
+          <FormPageSign
+            data={data}
+            setData={setData}
+            setValidation={setValidation}
+          />
         </div>
       );
     } else if (page == 1) {
       return (
         <div>
-          <FormPagePersonal data={data} setData={setData} />
+          <FormPageTerms
+            setValidation={setValidation}
+            validation={validation}
+          />
         </div>
       );
-    } else if (page == 2) {
-      return <FormPageTerms terms={terms} setTerms={setTerms} />;
     }
   };
 
   return (
     <>
       <S.Container>
+        <S.Progress>
+          {page > 0 ? <S.ProgressDone /> : <S.ProgressWhite />}
+          {page > 1 ? <S.ProgressDone /> : <S.ProgressWhite />}
+        </S.Progress>
+
         <S.FormDiv>
           <h3>{FormTitles[page]}</h3>
           <div>{changePage()}</div>
 
-          <div>
+          <S.ButtonDiv>
             <button onClick={handlePreviously} disabled={page == 0}>
               Voltar
             </button>
             {changeButton}
-          </div>
+          </S.ButtonDiv>
         </S.FormDiv>
       </S.Container>
     </>

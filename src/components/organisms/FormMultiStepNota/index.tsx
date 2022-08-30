@@ -1,6 +1,5 @@
 import * as S from "./styles";
 
-import deleteNotas from "../../../hooks/notas/deleteNotas";
 import { useEffect, useState } from "react";
 
 import FormPageNotaCnpj from "../../molecules/FormPageNotaCnpj";
@@ -36,10 +35,6 @@ const FormMultiStepNota = () => {
       setData(dataUpdate);
     }
   }, [, checkDataUpdate]);
-
-  useEffect(() => {
-    //console.log(data);
-  }, [data]);
 
   const cancelNoteCreateHandle = () => {
     changeComponentValue(0);
