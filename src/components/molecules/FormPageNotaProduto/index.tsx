@@ -2,7 +2,7 @@ import * as S from "./styles";
 import { useEffect } from "react";
 import Message from "../../atoms/Message";
 
-const FormPageProduct = ({ data, setData, setValidation, validation }) => {
+const FormPageProduct = ({ data, setData, setValidation, validation }: any) => {
   const handleProduct = (e: any) => {
     setData({ ...data, idProduto: e.target.value });
   };

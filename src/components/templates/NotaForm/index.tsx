@@ -5,7 +5,7 @@ import useDataGrid from "../../../hooks/contexts/useGridData";
 import FormMultiStepNota from "../../organisms/FormMultiStepNota";
 
 const NotaForm = () => {
-  const { changeComponentValue, finishedForm } = useDataGrid();
+  const { changeComponentValue, finishedForm }: any = useDataGrid();
 
   const cancelNoteCreateHandle = () => {
     changeComponentValue(0);

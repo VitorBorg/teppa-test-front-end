@@ -21,10 +21,10 @@ export const AuthProvider = ({ children }: any) => {
     auth.languageCode = "pt";
 
     signInWithPopup(auth, provider)
-      .then((result) => {
+      .then((result: any) => {
         // This gives you a Google Access Token. You can use it to access the Google API.
-        const credential = GoogleAuthProvider.credentialFromResult(result);
-        const resultAccess = result.user?.accessToken;
+        //const credential = GoogleAuthProvider.credentialFromResult(result);
+        const resultAccess = result.user?.accessToken!;
 
         window.localStorage.setItem("userToken", resultAccess);
         window.localStorage.setItem("auth", "true");
@@ -33,13 +33,17 @@ export const AuthProvider = ({ children }: any) => {
         setAuth(true);
       })
       .catch((error) => {
+        console.log();
         // Handle Errors here.
         const errorCode = error.code;
         const errorMessage = error.message;
         // The email of the user's account used.
         const email = error.customData.email;
         // The AuthCredential type that was used.
+        console.log(errorCode);
+        console.log(errorMessage);
         const credential = GoogleAuthProvider.credentialFromError(error);
+        console.log(credential);
         // ...
       });
   };
