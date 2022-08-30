@@ -5,6 +5,9 @@ Projeto que tinha como requisito obrigatório a implementação de um sistema fr
 ## Observações
 O deploy da aplicação foi feito no firebase hosting, porém nos testes houve problema de comunicação com a api, tanto para validação (do token no header das requisições), como as próprias requisições em si (Post, update e delete). Apesar de, em local, os testes tenham funcionado.
 
+## Rodando o projeto
+Para rodar o projeto utilize `npm run dev ou npm run start`
+
 Link do deploy do front end:
 https://notafiscal-teppa-front.web.app/home
 
