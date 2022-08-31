@@ -1,7 +1,7 @@
 import Axios from "axios";
 
 const getAllNotas = async () => {
-  const url = "https://teppa-test-backend.herokuapp.com/nota/all";
+  const url = "http://localhost:8098/nota/all";
 
   const res = await (
     await Axios.get(url, {
